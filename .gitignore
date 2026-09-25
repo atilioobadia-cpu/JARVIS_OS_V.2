@@ -1,0 +1,88 @@
+# --- Python ---
+__pycache__/
+.qa-artifacts/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Bytecode / cache
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Type check
+.mypy_cache/
+.dmypy.json
+
+# Lint
+.ruff_cache/
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+
+# If your app uses this JSON for local config/secrets
+config/api_keys.json
+config/ui_settings.json
+config/layout_settings.json
+config/.intro_voice_cache/
+config/gmail_credentials.json
+config/credentials.json
+credentials.json
+client_secret_*.json
+token.json
+
+# Local memory and task history
+memory/long_term.json
+memory/task_history.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.user
+*.log
+
+# Local runtime artifacts
+*.db
+*.sqlite
+
+# Playwright
+playwright/.cache/
+
+# If you generate local status/log files
+jarvis.log
+status.json
+
+
+tmp/
+outputs/
+.blackboxcli/
+.sixth/
+*.blackboxcli/
+*.sixth/
+
+# Local backup snapshots / experiments
+*.before_*
+*.broken_*
+*.before_remove
+*.before_remove_*
+*.codex_ui_control_working
+*.codex_*_working
+tutorial_overlay.py.before_remove
+*.before_tutorial_overlay
