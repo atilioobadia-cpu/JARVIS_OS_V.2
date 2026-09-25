@@ -303,6 +303,10 @@ def _call_tool(tool: str, parameters: dict, speak: Callable | None) -> str:
         from actions.weather_report import weather_action
         return weather_action(parameters=parameters, player=None) or "Done."
 
+    elif tool == "erpnext":
+        from actions.erpnext import erpnext_action
+        return erpnext_action(parameters=parameters, player=None) or "Done."
+
     elif tool == "computer_settings":
         from actions.computer_settings import computer_settings
         return computer_settings(parameters=parameters, player=None) or "Done."

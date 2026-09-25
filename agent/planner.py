@@ -135,6 +135,14 @@ youtube_video
 weather_report
   city: string (required)
 
+erpnext
+  action: "list" | "get" | "ping" (required)
+  doctype: string (required for list/get) — e.g. "Sales Order", "Sales Invoice", "Lead", "Quotation", "Customer", "Item", "Purchase Order", "Task"
+  name: string (required for get) — document name like SO-0001
+  filters: JSON list, e.g. [["status","=","Draft"]] (optional)
+  fields: comma-separated string, e.g. name,customer,grand_total (optional)
+  limit: integer 1-100 (optional, default 20)
+
 flight_finder
   origin: string (required)
   destination: string (required)

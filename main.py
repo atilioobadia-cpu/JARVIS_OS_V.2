@@ -22,6 +22,7 @@ from actions.file_processor import file_processor
 from actions.flight_finder     import flight_finder
 from actions.open_app          import open_app
 from actions.weather_report    import weather_action
+from actions.erpnext           import erpnext_action
 from actions.send_message      import send_message, prepare_message_reply
 from actions.email_control     import email_control
 from actions.message_monitor   import check_messages
@@ -342,6 +343,27 @@ TOOL_DECLARATIONS = [
                 "city": {"type": "STRING", "description": "City name"}
             },
             "required": ["city"]
+        }
+    },
+    {
+        "name": "erpnext",
+        "description": (
+            "Reads data from the user's ERPNext business system (read-only). "
+            "Use for anything about orders, invoices, customers, quotes, leads, inventory, or purchase orders. "
+            "action=list returns filtered records of a doctype; action=get returns one document by name; "
+            "action=ping verifies ERPNext connectivity."
+        ),
+        "parameters": {
+            "type": "OBJECT",
+            "properties": {
+                "action": {"type": "STRING", "description": "list (default), get, or ping."},
+                "doctype": {"type": "STRING", "description": "Document type to read: Sales Order, Sales Invoice, Lead, Quotation, Customer, Item, Purchase Order, Task, etc."},
+                "name": {"type": "STRING", "description": "Document name for action=get (e.g. SO-0001, INV-0002)."},
+                "filters": {"type": "STRING", "description": "JSON filter list, e.g. [[\"status\",\"=\",\"Draft\"]]."},
+                "fields": {"type": "STRING", "description": "Fields to return, comma-separated, e.g. name,customer,grand_total."},
+                "limit": {"type": "INTEGER", "description": "Max records to return, default 20."}
+            },
+            "required": ["doctype"]
         }
     },
     {
@@ -1334,6 +1356,10 @@ class JarvisLive:
             elif name == "weather_report":
                 r = await loop.run_in_executor(None, lambda: weather_action(parameters=args, player=self.ui))
                 result = r or "Weather delivered."
+
+            elif name == "erpnext":
+                r = await loop.run_in_executor(None, lambda: erpnext_action(parameters=args, player=self.ui))
+                result = r or "Done."
 
             elif name == "browser_control":
                 r = await loop.run_in_executor(None, lambda: browser_control(parameters=args, player=self.ui))

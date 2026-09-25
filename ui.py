@@ -8481,6 +8481,7 @@ class MainWindow(QMainWindow):
             "web_search": "Web Search",
             "deep_research": "Deep Research",
             "weather_report": "Weather Report",
+            "erpnext": "ERPNext",
             "browser_control": "Browser Control",
             "file_controller": "File Controller",
             "send_message": "Send Message",

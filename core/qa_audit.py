@@ -16,6 +16,7 @@ EXPECTED_TOOLS = {
     "desktop_control", "code_helper", "dev_agent", "agent_task",
     "computer_control", "game_updater", "flight_finder", "jarvis_ui_control",
     "file_processor", "create_presentation", "deep_research", "graphics_quality", "task_status", "save_memory",
+    "erpnext",
 }
 
 
